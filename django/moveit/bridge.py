@@ -16,8 +16,8 @@ class Planner(object):
 
     # These will eventually go to model objects
     robot_data = {
-        'group_name': 'right_arm_and_torso',
-        'eef_link': 'r_wrist_joint_link'
+        'group_name': 'left_arm',
+        'eef_link': 'left_hand_ee'
     }
 
     # Current state of the 'session' (right now, only one)
