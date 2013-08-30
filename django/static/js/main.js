@@ -13,7 +13,7 @@ $(function(){
   viewer.addObject(new ROS3D.Grid());
 
   // --------------- ROBOT ----------------------
-  $.get('/static/pr2_description/pr2.urdf',function(urdf_string){
+  $.get('/static/baxter_common/baxter_description/urdf/baxter.urdf',function(urdf_string){
     // Create URDF object
     var urdfModel = new ROSLIB.UrdfModel({
       string: urdf_string
@@ -21,7 +21,7 @@ $(function(){
     model = urdfModel;
     var theURDF = new ROS3D.Urdf({
       urdfModel: urdfModel,
-      path: 'http://resources.robotwebtools.org/',
+      path: '/static/baxter_common/',
       tfClient: {
         subscribe: function() {}
       }
