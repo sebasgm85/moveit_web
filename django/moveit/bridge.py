@@ -16,7 +16,7 @@ class Planner(object):
 
     # These will eventually go to model objects
     robot_data = {
-        'group_name': 'left_arm',
+        'group_name': 'left_hand',
         'eef_link': 'left_hand_ee'
     }
 

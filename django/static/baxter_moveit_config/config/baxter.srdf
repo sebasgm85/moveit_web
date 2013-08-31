@@ -19,12 +19,14 @@
         <joint name="left_e0" />
     </group>
     <group name="left_hand">
-        <joint name="left_w2" />
         <joint name="left_hand" />
         <joint name="left_endpoint" />
+        <joint name="left_hand_camera" />
+        <joint name="left_hand_camera_axis" />
+        <joint name="left_hand_range" />
     </group>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="left_hand_ee" parent_link="left_hand" group="left_hand" />
+    <end_effector name="left_hand_ee" parent_link="left_wrist" group="left_hand" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual-joint" type="fixed" parent_frame="reference_frame" child_link="base" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
