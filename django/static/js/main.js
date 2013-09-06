@@ -14,9 +14,9 @@ $(function(){
 
   // --------------- ROBOT ----------------------
   //$.get('/static/baxter_description/baxter.urdf',function(urdf_string){
-  $.get('/static/pr2_description/pr2.urdf',function(urdf_string){
-  //$.get('/static/atlas_description/atlas.urdf',function(urdf_string){
-  //$.get('/static/clam_description/urdf/clam.urdf',function(urdf_string){
+  //$.get('/static/pr2_description/pr2.urdf',function(urdf_string){
+  $.get('/static/atlas_description/atlas.urdf',function(urdf_string){
+  //$.get('/static/clam_description/clam.urdf',function(urdf_string){
     // Create URDF object
     var urdfModel = new ROSLIB.UrdfModel({
       string: urdf_string
@@ -24,8 +24,8 @@ $(function(){
     model = urdfModel;
     var theURDF = new ROS3D.Urdf({
       urdfModel: urdfModel,
-      //path: '/static/',
-      path: 'http://resources.robotwebtools.org/',
+      path: '/static/',
+      //path: 'http://resources.robotwebtools.org/',
       tfClient: {
         subscribe: function() {}
       }
