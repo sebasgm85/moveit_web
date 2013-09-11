@@ -18,18 +18,17 @@
   <arg name="publish_monitored_planning_scene" default="true"/>
 
 
-  <include ns="move_group" file="$(find #robot_moveit_config)/launch/planning_pipeline.launch">
+  <include ns="move_group" file="$(find #robot_moveit_config)/launch/planning_pipeline.launch.xml">
     <arg name="pipeline" value="ompl" />
   </include>
 
-  <include ns="move_group" file="$(find #robot_moveit_config)/launch/trajectory_execution.launch" if="$(arg allow_trajectory_execution)">
+  <include ns="move_group" file="$(find #robot_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_controller_manager" value="#robot" /> 
     <arg name="moveit_manage_controllers" value="true" />
   </include>
 
- <!-- <arg name="moveit_octomap_sensor_params_file" default="$(find #robot_moveit_config)/config/sensors_kinect.yaml"/> -->
- 
- <!-- <include ns="move_group" file="$(find #robot_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
+ <!-- <arg name="moveit_octomap_sensor_params_file" default="$(find #robot_moveit_config)/config/sensors_kinect.yaml"/>
+  <include ns="move_group" file="$(find #robot_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_sensor_manager" value="#robot" /> 
     <arg name="moveit_octomap_sensor_params_file" value="$(arg moveit_octomap_sensor_params_file)"/>
   </include> -->

@@ -13,10 +13,11 @@ $(function(){
   viewer.addObject(new ROS3D.Grid());
 
   // --------------- ROBOT ----------------------
-  //$.get('/static/baxter_description/baxter.urdf',function(urdf_string){
+  $.get('/static/baxter_description/baxter.urdf',function(urdf_string){
   //$.get('/static/pr2_description/pr2.urdf',function(urdf_string){
-  $.get('/static/atlas_description/atlas.urdf',function(urdf_string){
+  //$.get('/static/atlas_description/atlas.urdf',function(urdf_string){
   //$.get('/static/clam_description/clam.urdf',function(urdf_string){
+  //$.get('/static/r2_description/r2.urdf',function(urdf_string){
     // Create URDF object
     var urdfModel = new ROSLIB.UrdfModel({
       string: urdf_string

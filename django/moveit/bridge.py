@@ -16,8 +16,8 @@ class Planner(object):
 
     # These will eventually go to model objects
     robot_data = {
-        'group_name': 'left_arm',
-        'eef_link': 'left_gripper'
+        'group_name': 'left_arm', #'arm', #clam | # 'left_arm', baxter / pr2
+        'eef_link':   'gripper'  #'utorso' atlas | #'gripper' clam | #'left_gripper' baxter / pr2
     }
 
     # Current state of the 'session' (right now, only one)
@@ -36,13 +36,21 @@ class Planner(object):
 
         # HACK: Synthesize a valid initial joint configuration for PR2
         initial_joint_state = JointState()
-        initial_joint_state.name = ['r_elbow_flex_joint']
+        #initial_joint_state.name = ['l_elbow_flex_joint']
+        initial_joint_state.name = ['l_clav']
         initial_joint_state.position = [-0.1]
         self.jspub.publish(initial_joint_state)
 
-        # Create group we'll use all along this demo
+	print "--- initial joint state published ---"
+
+	gevent.sleep(2)
+        
+	print "--- gonna create move group object... ---"
+
+	# Create group we'll use all along this demo
         # self.move_group = MoveGroupCommander('right_arm_and_torso')
         self.move_group = MoveGroupCommander(self.robot_data['group_name'])
+	print "--- move group created ---"
         self._move_group = self.move_group._g
         self.ps = PlanningSceneInterface()
 
@@ -137,6 +145,8 @@ class Planner(object):
             gevent.sleep(wait_duration_time/acceleration)
             cur_time = point.time_from_start
             # self.publish_position(trajectory, i)
+
+            print " --- MSG: %s ---" % trajectory.joint_trajectory.joint_names
 
             # TODO: Only say "True" to update state on the last step of the trajectory
             new_poses = self._move_group.update_robot_state(trajectory.joint_trajectory.joint_names,
